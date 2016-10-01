@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 user-scalable=no">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+                </a>
+            </p>
+            <a class="navbar-brand" href="#">
+                Edit Page
+            </a>
+            <p class="navbar-text pull-right">
+                <a href="#" class="navbar-link">
+          <span class="glyphicon glyphicon-plus">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <form name="pageEForm" ng-app>
+        <div class="control-group">
+            <label for="page-name">Name</label>
+            <input ng-model="model.page.name"
+                   type="text"
+                   class="form-control"
+                   id="page-name"
+                   placeholder="Page Name"
+                   name="name"
+                   required>
+            <span class="help-inline"> </span>
+        </div>
+        <div class="form-group">
+            <label for="page-title">Title</label>
+            <input value="sample title" type="text" class="form-control" id="page-title"  placeholder="Page Title">
+        </div>
+        </form>
+    <a class="btn btn-danger btn-block">Delete</a>
+
+
+
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+
+        <div class="col-xs-12 text-center">
+            <a href="#" role="button">
+                <span class="glyphicon glyphicon-user pull-right navbar-text"></span>
+
+            </a>
+        </div>
+    </div>
+</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
+</head>
+<body>
