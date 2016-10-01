@@ -41,3 +41,20 @@ body {
 .leftTitle{
     float: none;
 }
+
+.jga-widget-tool{
+    position: absolute;
+    right: 15px;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 8px;
+    opacity: 0.7;
+}
+.jga-widget-padding{
+    padding-bottom:50px;
+}
+
+.list-group-item{
+    border:none;
+}
