@@ -14,14 +14,17 @@ body {
 .glyphicon-ok{
     margin-right: 17px;
     color: white;
+    padding-right: 17px;
 
 }
 .glyphicon-user:before{
     color: white;
+    padding-right: 17px;
 }
 .glyphicon-plus{
     margin-right: 17px;
     color: white;
+    padding-right: 17px;
 }
 
 .navbar-header{
@@ -57,4 +60,28 @@ body {
 
 .list-group-item{
     border:none;
+}
+
+.v-divider{
+    margin-left:5px;
+    margin-right:5px;
+    width:2px;
+    height:100%;
+    border-left:1px solid gray;
+}
+.glyphicon-plus{
+    color:white;
+}
+.colorWhite{
+    color:white;
+}
+.colorblack{
+    color:black;
+}
+
+.right-line{
+    height: 90vh;
+    border-right: 1px solid lightgrey;
+    margin-top: -20px;
+    padding-top: 10px;
 }
