@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1 user-scalable=no">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-</head>
-<body>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="row">
             <div class="col-xs-1 col-sm-1 col-mid-1 col-lg-1">
                 <p class="navbar-text pull-left">
-                    <a href="website-list.html" class="navbar-link">
+                    <a href="#/user/{{model.id}}/website" class="navbar-link">
                         <span class="glyphicon glyphicon-chevron-left"/>
                     </a>
                 </p>
@@ -28,7 +18,7 @@
             </div>
             <div class="hidden-xs hidden-sm col-md-1 col-lg-1 ">
                 <p class="navbar-text pull-right">
-                    <a href="website-new.html" class="navbar-link">
+                    <a href="#/user/{{model.id}}/website/new" class="navbar-link">
                         <span class="glyphicon glyphicon-plus"/>
                     </a>
                 </p>
@@ -36,14 +26,14 @@
 
             <div class="col-xs-10 col-sm-10 col-md-6 col-lg-6">
                 <!--<a class="navbar-text" href="#">-->
-                    <a class="colorWhite navbar-brand ">
-                        New Website
-                    </a>
+                <a class="colorWhite navbar-brand">
+                    New Website
+                </a>
                 <!--</a>-->
             </div>
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                 <p class="navbar-text pull-right">
-                    <a href="website-list.html" class="navbar-link">
+                    <a ng-click="model.createWebsite(name,description)" class="navbar-link">
                         <span class="glyphicon glyphicon-ok"/>
                     </a>
                 </p>
@@ -56,38 +46,15 @@
         <div class="row">
             <div class="hidden-xs hidden-sm col-md-5 col-lg-5 right-line">
                 <ul class="list-group">
-                    <li class="list-group-item">
-                        <a href="../page/page-list.html">
-                            Adress Book App
+                    <li ng-repeat="website in model.websites" class="list-group-item">
+                        <a href="#/user/{{website.developerId}}/website/{{website._id}}/page">
+                            {{website.name}}
                         </a>
-                        <a href="website-edit.html" class="pull-right">
+                        <a href="#/user/{{website.developerId}}/website/{{website._id}}" class="pull-right">
                             <span class="glyphicon glyphicon-cog"></span>
                         </a>
                     </li>
-                    <li class="list-group-item">
-                        <a href="../page/page-list.html">
-                            Blogger
-                        </a>
-                        <a href="website-edit.html" class="pull-right">
-                            <span class="glyphicon glyphicon-cog"></span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="../page/page-list.html">
-                            Blogging App
-                        </a>
-                        <a href="website-edit.html" class="pull-right">
-                            <span class="glyphicon glyphicon-cog"></span>
-                        </a>
-                    </li>
-                    <li class="list-group-item">
-                        <a href="../page/page-list.html">
-                            Script Testing App
-                        </a>
-                        <a href="website-edit.html" class="pull-right">
-                            <span class="glyphicon glyphicon-cog"></span>
-                        </a>
-                    </li>
+
                 </ul>
             </div>
 
@@ -96,11 +63,11 @@
                 <form>
                     <div class="form-group">
                         <label class="colorblack" for="name">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Name">
+                        <input ng-model="name" type="text" class="form-control" id="name" placeholder="Name">
                     </div>
                     <div class="form-group">
                         <label class="colorblack" for="description">Description</label>
-                        <textarea id="description" class="form-control" rows="6" placeholder="Description"></textarea>
+                        <textarea ng-model="description" id="description" class="form-control" rows="6" placeholder="Description"></textarea>
                     </div>
                 </form>
 
@@ -115,7 +82,7 @@
             </div>
             <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1">
                 <p class="navbar-text pull-right">
-                    <a href="../user/profile.html" class="navbar-link">
+                    <a href="#/user/{{model.id}}" class="navbar-link">
                         <span class="glyphicon glyphicon-user"/>
                     </a>
                 </p>
@@ -123,5 +90,3 @@
         </div>
     </div>
 </nav>
-</body>
-</html>
