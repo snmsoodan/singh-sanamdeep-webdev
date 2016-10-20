@@ -5,7 +5,7 @@
 
    
 
-    function RegisterController($location,$routeParams,UserService) {
+    function RegisterController($location,UserService) {
         
         var vm=this;
         vm.createUser=createUser;

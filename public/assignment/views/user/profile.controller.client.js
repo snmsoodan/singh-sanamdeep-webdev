@@ -8,14 +8,14 @@
         
         var vm=this;
         vm.updateUser=updateUser;
-        var id=$routeParams.uid;
+        vm.id=$routeParams.uid;
         function init() {
-            vm.user=UserService.findUserById(id);
+            vm.user=UserService.findUserById(vm.id);
         }
         init();
         
         function updateUser(newUser) {
-            UserService.updateUser(id,newUser);
+            UserService.updateUser(vm.id,newUser);
 
             vm.success="Success";
         }
