@@ -38,7 +38,13 @@
 
         
         function deleteUser(userId) {
-            
+            for(var i in users){
+                if(users[i]._id===userId){
+                    users.splice(i,1);
+                    return true;
+                }
+            }
+            return false;
         }
         function findUserByCredentials(username,password) {
 

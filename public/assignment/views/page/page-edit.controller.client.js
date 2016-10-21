@@ -1,9 +1,9 @@
 (function () {
     angular
         .module("WebAppMaker")
-        .controller("NewPageController",NewPageController)
+        .controller("PageEditController",PageEditController)
     
-     function NewPageController($location,$routeParams,PageService) {
+     function PageEditController($location,$routeParams,PageService) {
         var vm=this;
          vm.id=$routeParams.uid;
          vm.websiteId=$routeParams.wid;
