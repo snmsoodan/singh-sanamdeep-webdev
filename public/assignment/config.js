@@ -8,6 +8,9 @@
             .when("/",{
                 templateUrl:"views/home.html"
             })
+            .when("/home",{
+                templateUrl:"views/home.html"
+            })
             .when("/login",{
                 templateUrl:"views/user/login.view.client.html",
                 controller:"LoginController",
