@@ -14,13 +14,17 @@
          init();
          
          function createPage(name,title) {
-             var success=PageService.createPage(vm.websiteId,name,title);
-             if(success){
-                 $location.url("/user/"+vm.id+"/website/"+vm.websiteId+"/page");
-             }
-             else{
-                 vm.error="Unable to create new page";
-             }
+             var success=
+                 PageService.createPage(vm.websiteId,name,title)
+                     .then(function (response) {
+                         var success=response.data;
+                         if(success){
+                             $location.url("/user/"+vm.id+"/website/"+vm.websiteId+"/page");
+                         }
+                         else{
+                             vm.error="Unable to create new page";
+                         }
+                     })
          }
 
 

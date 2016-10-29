@@ -11,32 +11,40 @@
         vm.createUser=createUser;
 
         function createUser(username,password,rpassword) {
-            var checkDuplicateUsername=UserService.findUserByUsername(username);
-            if(checkDuplicateUsername){
-                vm.error="Username already exists";
-            }
-            else{
-                if(password===rpassword){
-                    var newUser={
-                        _id:(new Date).getTime()+"",
-                        username:username,
-                        password:password,
-                        firstName:username,
-                        lastName:username
-                    };
-                    var success=UserService.createUser(newUser);
-                    if(success){
-                        $location.url("/user/"+newUser._id)
+            // var checkDuplicateUsername=UserService.findUserByUsername(username);
+
+            UserService.findUserByUsername(username)
+                .then(function (response) {
+                    var checkDuplicateUsername=response.data;
+                    if(checkDuplicateUsername){
+                        vm.error="Username already exists";
                     }
                     else{
-                        $location.url("/login");
+                        if(password===rpassword){
+                            var newUser={
+                                _id:(new Date).getTime()+"",
+                                username:username,
+                                password:password,              
+                                firstName:username,
+                                lastName:username
+                            };
+                            UserService.createUser(newUser)
+                                .then(function (response) {
+                                    var success=response.data;
+                                    if(success){
+                                        $location.url("/user/"+newUser._id)
+                                    }
+                                    else{
+                                        $location.url("/login");
+                                    }
+                                })
+                        }
+                        else{
+                            vm.error="Passwords do not match";
+                        }
+
                     }
-                }
-                else{
-                    vm.error="Passwords do not match";
-                }
-                
-            }
+                })
         }
 
 

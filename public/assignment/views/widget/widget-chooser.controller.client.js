@@ -47,14 +47,19 @@
                      text:"<p>Lorem ipsum</p>",
                  }
              }
-             var success=WidgetService.createWidget(vm.pageId,newWidget);
-             if(success){
-                 var widgetId=newWidget._id;
-                 $location.url("/user/"+vm.id+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+widgetId);
-             }
-             else{
-                 vm.error="unable to update widget";
-             }
+             
+                 WidgetService.createWidget(vm.pageId,newWidget)
+                     .then(function (response) {
+                         var success=response.data;
+                         if(success){
+                             var widgetId=newWidget._id;
+                             $location.url("/user/"+vm.id+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+widgetId);
+                         }
+                         else{
+                             vm.error="unable to update widget";
+                         }
+                     })
+             
          }
     }
 })();

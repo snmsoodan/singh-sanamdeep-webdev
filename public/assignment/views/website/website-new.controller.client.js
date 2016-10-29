@@ -13,13 +13,18 @@
          init();
 
          function createWebsite(name,description) {
-           var newWebsite=WebsiteService.createWebsite(name,description,vm.id);
-            if(newWebsite){
-                $location.url("/user/"+vm.id+"/website");
-            }
-             else{
-                vm.error="unable to create website";
-            }
+
+
+               WebsiteService.createWebsite(name,description,vm.id)
+                    .then(function (response) {
+                 var newWebsite=response.data;
+                 if(newWebsite){
+                     $location.url("/user/"+vm.id+"/website");
+                 }
+                 else{
+                     vm.error="unable to create website";
+                 }
+             })
          }
     }
 })();

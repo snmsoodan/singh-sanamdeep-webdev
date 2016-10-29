@@ -10,14 +10,19 @@
 
         
         vm.login=function (username,password) {
-        var user=UserService.findUserByCredentials(username,password);
-            if(user){
-               
-                $location.url("/user/"+user._id);
-            }
-            else{
-                vm.error="User not found";
-            }
+        UserService
+            .findUserByCredentials(username,password)
+            .then(function (response) {
+                var user=response.data;
+                if(user){
+
+                    $location.url("/user/"+user._id);
+                }
+                else{
+                    vm.error="User not found";
+                }
+            });
+
 
         }
     }

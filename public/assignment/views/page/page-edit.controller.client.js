@@ -11,31 +11,48 @@
          vm.updatePage=updatePage;
          vm.deletePage=deletePage;
          function init() {
-             vm.pages=PageService.findPageByWebsiteId(vm.websiteId);
-             vm.page=PageService.findPageById(vm.pageId);
+
+                 PageService.findPageByWebsiteId(vm.websiteId)
+                     .then(function (response) {
+                         vm.pages=response.data;
+                     })
+
+
+                 PageService.findPageById(vm.pageId)
+                     .then(function (response) {
+                         vm.page=response.data;
+                     })
          }
          init();
          
          function updatePage(name,title) {
-             var success=PageService.updatePage(vm.pageId,name,title);
-             if(success){
-                 $location.url("/user/"+vm.id+"/website/"+vm.websiteId+"/page");
-             }
-             else{
-                 vm.error="Unable to update page";
-             }
+             console.log(name+"   "+title);
+
+                 PageService.updatePage(vm.pageId,name,title)
+                     .then(function (response) {
+                         var success=response.data;
+                         if(success){
+                             $location.url("/user/"+vm.id+"/website/"+vm.websiteId+"/page");
+                         }
+                         else{
+                             vm.error="Unable to update page";
+                         }
+                     })
+
          }
          
          function deletePage() {
-             var success=PageService.deletePage(vm.pageId);
-             if(success){
-                 $location.url("/user/"+vm.id+"/website/"+vm.websiteId+"/page");
-             }
-             else{
-                 vm.error="Unable to delete page";
-             }
+
+                 PageService.deletePage(vm.pageId)
+                     .then(function (response) {
+                         var success=response.data;
+                         if(success){
+                             $location.url("/user/"+vm.id+"/website/"+vm.websiteId+"/page");
+                         }
+                         else{
+                             vm.error="Unable to delete page";
+                         }
+                     })
          }
-
-
     }
 })();

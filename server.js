@@ -16,5 +16,6 @@ require ("./test/app.js")(app);
 // app.listen(port, ipaddress);
 
 //console.log(process.env);
-
+var assignment=require("./assignment/app.js");
+assignment(app);
 app.listen(3000);

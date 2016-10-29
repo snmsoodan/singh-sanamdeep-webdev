@@ -3,15 +3,8 @@
         .module("WebAppMaker")
         .factory("WebsiteService",WebsiteService);
 
-    var websites=[
-        { "_id": "123", "name": "Facebook",    "developerId": "456", description:"sanam" },
-        { "_id": "234", "name": "Tweeter",     "developerId": "456" },
-        { "_id": "456", "name": "Gizmodo",     "developerId": "456" },
-        { "_id": "567", "name": "Tic Tac Toe", "developerId": "123" },
-        { "_id": "678", "name": "Checkers",    "developerId": "123" },
-        { "_id": "789", "name": "Chess",       "developerId": "234" }
-    ]
-    function WebsiteService() {
+    
+    function WebsiteService($http) {
         var api={
             findWebsitesByUser:findWebsitesByUser,
             createWebsite:createWebsite,
@@ -21,34 +14,19 @@
         }
         return api;
         
-        function updateWebsite(websiteId,name,desc) {
-            for(var i in websites){
-                if(websites[i]._id===websiteId){
-                    websites[i]._name=name;
-                    websites[i].description=desc;
-                    return true;
-                }
-            }
-            return false;
+        function updateWebsite(website) {
+            var url="/api/website/"+website._id;
+            return $http.put(url,website);
         }
         
         function findWebsiteById(websiteId) {
-            for(var i in websites){
-                if(websites[i]._id===websiteId){
-                    return websites[i];
-                }
-            }
-            return null;
+            var url="/api/website/"+websiteId;
+            return $http.get(url);
         }
 
         function deleteWebsite(websiteId) {
-            for(var i in websites){
-                if(websites[i]._id===websiteId){
-                    websites.splice(i,1);
-                    return true;
-                }
-            }
-            return false;
+            var url="/api/website/"+websiteId;
+            return $http.delete(url);
         }
 
         function createWebsite(name,desc,id) {
@@ -58,18 +36,13 @@
                 developerId:id,
                 description:desc
             };
-            websites.push(newWebsite);
-            return newWebsite;
+            var url="/api/user/"+id+"/website";
+            return $http.post(url,newWebsite);
         }
 
         function findWebsitesByUser(id) {
-            var resultset=[];
-            for(var i in websites){
-                if(websites[i].developerId===id){
-                    resultset.push(websites[i]);
-                }
-            }
-            return resultset;
+            var url="/api/user/"+id+"/website";
+            return $http.get(url);
         }
     }
 })();
