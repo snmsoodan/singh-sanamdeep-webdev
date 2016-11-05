@@ -11,9 +11,14 @@
             createWidget:createWidget,
             deleteWidget:deleteWidget,
             findWidgetById:findWidgetById,
-            updateWidget:updateWidget
+            updateWidget:updateWidget,
+            reorderWidget: reorderWidget
         }
         return api;
+
+        function reorderWidget(pageId, start, end) {
+            return $http.put("/page/"+pageId+"/widget?start="+start+"&end="+end);
+        }
         
         function updateWidget(widgetId,widget) {
             var url="/api/widget/"+widgetId;

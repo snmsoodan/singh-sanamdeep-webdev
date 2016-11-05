@@ -32,5 +32,16 @@
                      })
          }
          init();
+
+
+         function reorderWidget(start, end) {
+             console.log(start+ "  " + end);
+             WidgetService
+                 .reorderWidget(vm.pageId, start, end)
+                 .then(
+                     function (response) {
+                         init();
+                     });
+         }
     }
 })();

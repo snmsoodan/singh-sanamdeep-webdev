@@ -23,7 +23,7 @@
 
 <div class="container">
 
-    <form>
+    <form action="/api/uploads"  method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="widget-name">Name</label>
             <input ng-model="model.widget.name" type="text" class="form-control" id="widget-name">
@@ -43,8 +43,16 @@
         </div>
 
 
+        <!--<label for="widget-upload">Upload</label>-->
+        <!--<input  type="file" class="form-control" id="widget-upload">-->
+
         <label for="widget-upload">Upload</label>
-        <input  type="file" class="form-control" id="widget-upload">
+        <input  name="myFile"   type="file" class="form-control"/>
+        <input name="userId" value="{{model.id}}" style="display: none" />
+        <input name="websiteId" value="{{model.websiteId}}" style="display: none" />
+        <input name="pageId" value="{{model.pageId}}" style="display:none" />
+        <input name="width" value="{{model.widget.width}}" style="display:none" />
+        <input  name="widgetId" value="{{model.widget._id}}"   style="display:none"/>
 
         <button type="submit"   class="btn btn-block btn-primary">Upload Image</button>
 
