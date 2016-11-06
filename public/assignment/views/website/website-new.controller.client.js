@@ -8,7 +8,10 @@
          vm.id=$routeParams.uid;
          vm.createWebsite=createWebsite;
          function init() {
-             vm.websites=WebsiteService.findWebsitesByUser(vm.id);
+             WebsiteService.findWebsitesByUser(vm.id)
+                 .then(function (response) {
+                     vm.websites=response.data;
+                 })
          }
          init();
 

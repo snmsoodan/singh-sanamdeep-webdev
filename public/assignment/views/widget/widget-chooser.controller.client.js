@@ -10,15 +10,28 @@
          vm.pageId=$routeParams.pid;
          vm.createWidget=createWidget;
 
+         function init() {
+
+             WidgetService.findWidgetsByPageId(vm.pageId)
+                 .then(function (response) {
+                     vm.widgets=response.data;
+                 })
+         }
+         init();
+
 
          function createWidget(type) {
+             var order=vm.widgets.length;
+             console.log(order);
+
              if(type==="HEADER"){
                 var  newWidget={
                      _id:(new Date()).getTime()+"",
                      widgetType:"HEADER",
                      pageId:vm.pageId,
                      size:2,
-                     text:"Default"
+                     text:"Default",
+                     order:order
                  }
              }
              else if(type==="IMAGE"){
@@ -27,7 +40,8 @@
                      widgetType:"IMAGE",
                      pageId:vm.pageId,
                      width:"100%",
-                     url:"http://lorempixel.com/400/200/"
+                     url:"http://lorempixel.com/400/200/",
+                     order:order
                  }
              }
              else if(type==="YOUTUBE"){
@@ -36,7 +50,8 @@
                      widgetType:"YOUTUBE",
                      pageId:vm.pageId,
                      width:"100%",
-                     url:"http://lorempixel.com/400/200/"
+                     url:"https://youtu.be/C3DbrYx-SN4",
+                     order:order
                  }
              }
              else if(type==="HTML"){
@@ -45,6 +60,7 @@
                      widgetType:"HTML",
                      pageId:vm.pageId,
                      text:"<p>Lorem ipsum</p>",
+                     order:order
                  }
              }
              

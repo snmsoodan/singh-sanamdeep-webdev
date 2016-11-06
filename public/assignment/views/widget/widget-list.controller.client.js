@@ -27,10 +27,11 @@
 
          function init() {
 
-                 WidgetService.findWidgetsByPageId(vm.pageId)
-                     .then(function (response) {
-                         vm.widgets=response.data;
-                     })
+             WidgetService.findWidgetsByPageId(vm.pageId)
+                 .then(function (response) {
+                     vm.widgets=response.data;
+                     // console.log(vm.widgets)
+                 })
          }
          init();
 

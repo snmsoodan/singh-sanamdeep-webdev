@@ -53,10 +53,21 @@ module.exports=function (app) {
         var pageId = req.params.pageId;
         var start = parseInt(req.query.start);
         var end =  parseInt(req.query.end);
-        start = start;
-        end = end;
-        console.log("service");
-        widgets.splice(end,0,widgets.splice(start,1)[0]);
+        modifiedStart = getIndexOf(pageId,start);
+        modifiedEnd = getIndexOf(pageId,end);
+        widgets.splice(modifiedEnd,0,widgets.splice(modifiedStart,1)[0]);
+        // console.log(widgets)
+        res.send(widgets);
+    }
+
+    function getIndexOf(pid,i){
+        resultset = [];
+        for(var w in widgets){
+            if(widgets[w].pageId == pid){
+                resultset.push(w);
+            }
+        }
+        return resultset[i];
     }
     
     function deleteWidget(req,res) {
