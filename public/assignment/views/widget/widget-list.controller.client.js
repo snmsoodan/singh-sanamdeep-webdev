@@ -10,6 +10,7 @@
          vm.pageId=$routeParams.pid;
          vm.getSafeHtml=getSafeHtml;
          vm.getSafeUrl=getSafeUrl;
+         vm.reorderWidget=reorderWidget;
 
 
          function getSafeHtml(widget) {
@@ -35,11 +36,12 @@
 
 
          function reorderWidget(start, end) {
-             console.log(start+ "  " + end);
+             console.log("reorder"+start+ "  " + end);
              WidgetService
                  .reorderWidget(vm.pageId, start, end)
                  .then(
                      function (response) {
+                         console.log("geting called")
                          init();
                      });
          }

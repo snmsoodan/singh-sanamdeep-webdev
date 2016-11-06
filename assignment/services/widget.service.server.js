@@ -55,38 +55,8 @@ module.exports=function (app) {
         var end =  parseInt(req.query.end);
         start = start;
         end = end;
-        console.log("service")
-
-        for(var i in widgets) {
-            if(start< end){
-
-                if(widgets[i].order === start){
-                    widgets[i].order = end;
-                    widgets[i].save();
-                }
-                else if(widget.order > start && widget.order <= end){
-                    widgets[i].order--;
-
-                    widgets[i].save();
-
-                }
-            } else{
-                if(widgets[i].order === start){
-
-                    widgets[i].order = end;
-                    widgets[i].save();
-
-                }
-
-                else if(widgets[i].order < start && widgets[i].order >= end){
-
-                    widgets[i].order++;
-
-                    widgets[i].save();
-
-                }
-            }
-        }
+        console.log("service");
+        widgets.splice(end,0,widgets.splice(start,1)[0]);
     }
     
     function deleteWidget(req,res) {
