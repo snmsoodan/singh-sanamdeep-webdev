@@ -119,10 +119,12 @@ module.exports=function (app) {
                     widgets[i].text=widget.text;
                     widgets[i].name=widget.name;
                     widgets[i].url=widget.url;
+                    console.log("true")
                     res.send(true);
                     return;
                 }
             }
+            console.log("false")
             res.send(false);
             return;
         }
