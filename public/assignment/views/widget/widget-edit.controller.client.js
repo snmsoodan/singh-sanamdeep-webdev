@@ -17,6 +17,7 @@
                  WidgetService.findWidgetById(vm.widgetId)
                      .then(function (response) {
                          vm.widget=response.data;
+                         console.log(vm.widget)
                      })
          }
          init();

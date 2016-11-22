@@ -30,7 +30,7 @@
              WidgetService.findWidgetsByPageId(vm.pageId)
                  .then(function (response) {
                      vm.widgets=response.data;
-                     // console.log(vm.widgets)
+                     console.log(vm.widgets)
                  })
          }
          init();

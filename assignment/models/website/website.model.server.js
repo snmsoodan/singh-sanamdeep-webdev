@@ -17,8 +17,6 @@ module.exports=function () {
     }
 
     function createWebsite(userId,website) {
-        console.log("reached");
-        console.log(website);
         return Website.create(website);
     }
 
@@ -29,7 +27,8 @@ module.exports=function () {
     function updateWebsite(id,website) {
         return Website
             .update({_id:id},{$set:{
-                name:website.name
+                name:website.name,
+                description:website.description
             }})
     }
 

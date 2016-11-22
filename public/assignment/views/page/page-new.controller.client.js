@@ -17,7 +17,7 @@
          init();
          
          function createPage(name,title) {
-             var success=
+             // var success=
                  PageService.createPage(vm.websiteId,name,title)
                      .then(function (response) {
                          var success=response.data;

@@ -11,6 +11,7 @@ module.exports=function () {
             id:String,
             displayName:String
         },
+        email:String,
         dob:Date,
         dateCreated: {type:Date,default:Date.now}
     },{collection:"assignment.user"});

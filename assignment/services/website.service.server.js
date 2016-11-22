@@ -37,16 +37,24 @@ module.exports=function (app,models) {
     }
     
     function updateWebsite(req,res) {
+        var id=req.params.websiteId;
         var website=req.body;
-        for(var i in websites){
-            if(websites[i]._id===website._id){
-                websites[i].name=website.name;
-                websites[i].description=website.description;
-                res.send(true);
-                return;
-            }
-        }
-        res.send(false);
+        // for(var i in websites){
+        //     if(websites[i]._id===website._id){
+        //         websites[i].name=website.name;
+        //         websites[i].description=website.description;
+        //         res.send(true);
+        //         return;
+        //     }
+        // }
+        // res.send(false);
+        websiteModel
+            .updateWebsite(id,website)
+            .then(function (status) {
+                res.send(200);
+            },function (error) {
+                res.statusCode(404).send(error);
+            })
     }
     
     function findWebsiteById(req,res) {
@@ -78,10 +86,8 @@ module.exports=function (app,models) {
         websiteModel
             .createWebsite(userId,website)
             .then(function(website) {
-                console.log("success")
                 res.json(website);
             },function(error) {
-                console.log("failure");
                 res.statusCode(404).send(error);
             });
     }

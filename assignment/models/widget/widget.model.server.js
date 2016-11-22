@@ -14,7 +14,6 @@ module.exports=function () {
     return api;
 
     function reorderWidget(start, end, pageId) {
-        console.log("model")
         return Widget
             .find({_page: pageId}, function (err, widgets) {
                 widgets.forEach(function (widget) {
@@ -59,7 +58,6 @@ module.exports=function () {
             .find({_page: widget._page})
             .then(
                 function (widgets) {
-                    console.log("widget:length"+widgets.length);
                     widget.order = widgets.length;
                     return Widget.create(widget);
                 },
@@ -82,7 +80,8 @@ module.exports=function () {
                 .update({_id:widget._id},{
                     $set:{
                         text:widget.text,
-                        size:widget.size
+                        size:widget.size,
+                        name:widget.name
                     }
                 })
         }

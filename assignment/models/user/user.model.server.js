@@ -20,13 +20,12 @@ module.exports=function () {
     }
 
     function createUser(user) {
-        console.log("user.model.server.createUser()");
-        console.log(user);
+        // console.log("user.model.server.createUser()");
+        // console.log(user);
         return User.create(user);
     }
 
     function findUserById(userId) {
-        console.log(userId);
         return User.findById(userId);
     }
 
@@ -49,7 +48,8 @@ module.exports=function () {
             .update({_id:id},{
                 $set: {
                     firstName:newUser.firstName,
-                    lastName:newUser.lastName
+                    lastName:newUser.lastName,
+                    email:newUser.email,
                 }
             });
     }

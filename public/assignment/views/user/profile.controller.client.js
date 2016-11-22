@@ -10,10 +10,13 @@
         vm.updateUser=updateUser;
         vm.id=$routeParams.uid;
         function init() {
-            
+            console.log("controller in");
+            console.log(vm.id);
             UserService.findUserById(vm.id)
                 .then(function (response) {
                     vm.user=response.data;
+                    console.log("controller")
+                    console.log(vm.user)
                 });
         }
         init();

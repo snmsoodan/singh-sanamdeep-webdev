@@ -51,7 +51,8 @@ module.exports=function (app,models) {
         var newWidget = {
             url: "/uploads/"+filename,
             type:"IMAGE",
-            _id:widgetId
+            _id:widgetId,
+            width:width
         };
 
         widgetModel
@@ -194,31 +195,53 @@ module.exports=function (app,models) {
 
     function findWidgetById(req,res) {
         var widgetId=req.params.widgetId;
-        for(var i in widgets){
-            if(widgets[i]._id===widgetId){
-                res.send(widgets[i]);
-                return;
-            }
-        }
-        res.send(null);
-        return;
+        // for(var i in widgets){
+        //     if(widgets[i]._id===widgetId){
+        //         res.send(widgets[i]);
+        //         return;
+        //     }
+        // }
+        // res.send(null);
+        // return;
+        widgetModel
+            .findWidgetById(widgetId)
+            .then(function (widget) {
+                res.send(widget);
+            },function (error) {
+                res.statusCode(404).send(error);
+            })
     }
     
     function createWidget(req,res) {
         var newWidget=req.body;
-        widgets.push(newWidget);
-        res.send(newWidget);
+        // widgets.push(newWidget);
+        // res.send(newWidget);
+        widgetModel
+            .createWidget(newWidget)
+            .then(function (widget) {
+                res.json(widget);
+            },function (error) {
+                res.statusCode(404).send(error);
+            })
     }
     
    function findAllWidgetsForPage(req,res) {
        var pageId=req.params.pageId;
-       var resultset=[];
-       for(var i in widgets){
-           if(widgets[i].pageId===pageId){
-               resultset.push(widgets[i]);
-           }
-       }
-       res.send(resultset);
-       return;
+       // var resultset=[];
+       // for(var i in widgets){
+       //     if(widgets[i].pageId===pageId){
+       //         resultset.push(widgets[i]);
+       //     }
+       // }
+       // res.send(resultset);
+       // return;
+       widgetModel
+           .findAllWidgetsForPage(pageId)
+           .then(function (widgets) {
+               res.json(widgets);
+           },function (error) {
+               res.statusCode(404).send(error);
+           })
+
    }
 };

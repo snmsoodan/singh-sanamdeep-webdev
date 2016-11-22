@@ -64,8 +64,6 @@ module.exports=function (app,models) {
         userModel
             .createUser(user)
             .then(function (user) {
-                console.log(user);
-                console.log("service.server");
                 res.json(user);
             },function (error) {
                 res.statusCode(400).send(error);
@@ -89,7 +87,6 @@ module.exports=function (app,models) {
     }
     function findUserById(req,res) {
         var id=req.params.userId;
-
         userModel
             .findUserById(id)
             .then(function (user) {
@@ -112,9 +109,8 @@ module.exports=function (app,models) {
         userModel
             .findUserByCredentials(username,password)
             .then(function (user) {
-                console.log(req.session);
-                req.session.currentUser=user;
-
+                // console.log(req.session);
+                // req.session.currentUser=user;
                 res.json(user);
             },function (error) {
                 res.statusCode(404).send(error);

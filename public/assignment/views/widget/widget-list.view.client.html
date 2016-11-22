@@ -21,12 +21,12 @@
     </div>
 </nav>
 
-<<<<<<< HEAD
-<div wam-sortable wam-callback="model.reorderWidget(start, end)" class="container bottom-w">
-=======
+
+
+
 <div wam-sortable wam-callback="model.reorderWidget(start, end)" class="container bottom-widget">
->>>>>>> e6c52a60678198773326758c1a995ce37e694a4c
-    <div ng-repeat="widget in model.widgets" class="jga-widget">
+
+    <div ng-repeat="widget in model.widgets | orderBy: 'order'" class="jga-widget">
 
         <div class="jga-widget-tool">
         <a href="#/user/{{model.id}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
@@ -36,7 +36,7 @@
         </div>
 
 
-        <div ng-switch="widget.widgetType">
+        <div ng-switch="widget.type">
             <div ng-switch-when="HEADER" ng-switch="widget.size">
                 <h1 ng-switch-when="1">{{widget.text}}</h1>
                 <h2 ng-switch-when="2">{{widget.text}}</h2>
@@ -63,10 +63,11 @@
             </div>
 
         </div>
-    </div>
+
 
 
 </div>
+    </div>
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

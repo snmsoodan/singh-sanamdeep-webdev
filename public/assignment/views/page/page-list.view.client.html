@@ -24,10 +24,10 @@
 <div class="container-fluid">
     <ul class="list-group">
         <li ng-repeat="page in model.pages" class="list-group-item">
-            <a href="#/user/{{model.id}}/website/{{page.websiteId}}/page/{{page._id}}/widget">
+            <a href="#/user/{{model.id}}/website/{{page._website}}/page/{{page._id}}/widget">
                {{page.name}}
             </a>
-            <a href="#/user/{{model.id}}/website/{{page.websiteId}}/page/{{page._id}}" class="pull-right">
+            <a href="#/user/{{model.id}}/website/{{page._website}}/page/{{page._id}}" class="pull-right">
                 <span class="glyphicon glyphicon-cog"></span>
             </a>
         </li>

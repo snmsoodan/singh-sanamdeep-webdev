@@ -14,6 +14,8 @@
             .findUserByCredentials(username,password)
             .then(function (response) {
                 var user=response.data;
+                console.log("controller")
+                console.log(user)
                 if(user){
 
                     $location.url("/user/"+user._id);

@@ -26,7 +26,8 @@ module.exports=function () {
         return Page
             .update({_id:id},{
                 $set:{
-                    name:page.name
+                    name:page.name,
+                    title:page.title
                 }
             })
     }

@@ -31,9 +31,9 @@
 
         function createWebsite(name,desc,id) {
             var newWebsite={
-                _id:(new Date()).getTime()+"",
+                // _id:(new Date()).getTime()+"",
                 name:name,
-                developerId:id,
+                _user:id,
                 description:desc
             };
             var url="/api/user/"+id+"/website";

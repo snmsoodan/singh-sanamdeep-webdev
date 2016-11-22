@@ -26,9 +26,9 @@
 
              if(type==="HEADER"){
                 var  newWidget={
-                     _id:(new Date()).getTime()+"",
-                     widgetType:"HEADER",
-                     pageId:vm.pageId,
+                     // _id:(new Date()).getTime()+"",
+                    type:"HEADER",
+                     _page:vm.pageId,
                      size:2,
                      text:"Default",
                      order:order
@@ -36,9 +36,9 @@
              }
              else if(type==="IMAGE"){
                  var  newWidget={
-                     _id:(new Date()).getTime()+"",
-                     widgetType:"IMAGE",
-                     pageId:vm.pageId,
+                     // _id:(new Date()).getTime()+"",
+                     type:"IMAGE",
+                     _page:vm.pageId,
                      width:"100%",
                      url:"http://lorempixel.com/400/200/",
                      order:order
@@ -46,9 +46,9 @@
              }
              else if(type==="YOUTUBE"){
                  var  newWidget={
-                     _id:(new Date()).getTime()+"",
-                     widgetType:"YOUTUBE",
-                     pageId:vm.pageId,
+                     // _id:(new Date()).getTime()+"",
+                     type:"YOUTUBE",
+                     _page:vm.pageId,
                      width:"100%",
                      url:"https://youtu.be/C3DbrYx-SN4",
                      order:order
@@ -56,9 +56,9 @@
              }
              else if(type==="HTML"){
                  var  newWidget={
-                     _id:(new Date()).getTime()+"",
-                     widgetType:"HTML",
-                     pageId:vm.pageId,
+                     // _id:(new Date()).getTime()+"",
+                     type:"HTML",
+                     _page:vm.pageId,
                      text:"<p>Lorem ipsum</p>",
                      order:order
                  }
@@ -67,8 +67,9 @@
                  WidgetService.createWidget(vm.pageId,newWidget)
                      .then(function (response) {
                          var success=response.data;
+                         console.log(success)
                          if(success){
-                             var widgetId=newWidget._id;
+                             var widgetId=success._id;
                              $location.url("/user/"+vm.id+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+widgetId);
                          }
                          else{
