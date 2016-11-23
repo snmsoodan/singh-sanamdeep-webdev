@@ -37,9 +37,10 @@
         }
 
         function selectPhoto(photo) {
+            console.log(photo)
             var order=vm.widgets.length;
             console.log(order);
-            var url="https://farm"+photo.farm+".staticflickr.com/"+photo.server+"/"+photo.id+"_"+photo.secret+"_s.jpg";
+            var url="https://farm"+photo.farm+".staticflickr.com/"+photo.server+"/"+photo.id+"_"+photo.secret+"_b.jpg";
             var newWidget={
                 url:url,
                 _id:vm.widgetId,
