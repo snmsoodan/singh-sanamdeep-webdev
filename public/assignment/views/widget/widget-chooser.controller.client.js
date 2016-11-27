@@ -63,6 +63,17 @@
                      order:order
                  }
              }
+             else if(type==="TEXT"){
+                 var  newWidget={
+                     // _id:(new Date()).getTime()+"",
+                     type:"TEXT",
+                     _page:vm.pageId,
+                     text:"<p>Lorem ipsum</p>",
+                     rows:2,
+                     placeholder:"This is a placeholder",
+                     formatted:true
+                 }
+             }
              
                  WidgetService.createWidget(vm.pageId,newWidget)
                      .then(function (response) {

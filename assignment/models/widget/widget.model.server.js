@@ -117,6 +117,18 @@ module.exports=function () {
                 })
         }
 
+        else if(widget.type==="TEXT") {
+            return Widget
+                .update({_id:widget._id},{
+                    $set:{
+                        text :widget.text,
+                        rows :widget.rows,
+                        placeholder :widget.placeholder,
+                        formatted:widget.formatted
+                    }
+                })
+        }
+
 
 
     }

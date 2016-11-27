@@ -1,0 +1,56 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-left">
+                <a href="#/user/{{model.id}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-link">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+                </a>
+            </p>
+            <a class="navbar-brand">
+                Widget Edit
+            </a>
+            <p class="navbar-text pull-right">
+                <a ng-click="model.updateWidget(model.widget)" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+<div class="form-group">
+    <label for="Text" class="control-label">Text</label>
+    <input ng-model="model.widget.text" type="text" class="form-control" id="Text" placeholder="Text"/>
+</div>
+<div class="form-group">
+    <label for="Rows" class="control-label">Rows</label>
+    <input ng-model="model.widget.rows" type="number" class="form-control" id="Rows" placeholder="Rows"/>
+</div>
+<div class="form-group">
+    <label for="Placeholder" class="control-label">Placeholder</label>
+    <input ng-model="model.widget.placeholder" type="text" class="form-control" id="Placeholder" placeholder="Placeholder"/>
+</div>
+<div class="form-group">
+    <label for="Formatted" class="control-label">Formatted</label>
+    <input ng-model="model.widget.formatted" type="checkbox" class="form-control" id="Formatted" placeholder="Formatted"/>
+</div>
+
+    <a class="btn btn-danger btn-block" ng-click="model.deleteWidget()">Delete</a>
+
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+
+        <div class="col-xs-12 text-center">
+            <a href="#/user/{{model.id}}" role="button">
+                <span class="glyphicon glyphicon-user pull-right navbar-text"></span>
+
+            </a>
+        </div>
+    </div>
+</nav>

@@ -126,6 +126,7 @@ module.exports=function (app,models) {
     function updateWidget(req,res) {
         var widgetId=req.params.widgetId;
         var widget=req.body;
+        console.log(widget)
         var widgetType=widget.widgetType;
         // if(widget.widgetType=="HEADER"){
         //     for(var i in widgets){
