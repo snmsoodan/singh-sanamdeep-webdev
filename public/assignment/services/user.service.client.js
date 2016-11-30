@@ -12,9 +12,34 @@
             findUserById:findUserById,
             updateUser:updateUser,
             deleteUser:deleteUser,
-            findUserByUsername:findUserByUsername
+            findUserByUsername:findUserByUsername,
+            login:login,
+            logout:logout,
+            loggedIn:loggedIn,
+            register:register
         }
         return api;
+
+
+        function loggedIn() {
+            return $http.get("/api/loggedIn");
+        }
+
+        function register(newUser) {
+                return $http.post("/api/register/", newUser);
+        }
+
+        function login(username,password) {
+            var user ={
+                username:username,
+                password:password
+            };
+            return $http.post("/api/login",user);
+        }
+
+        function logout() {
+            return $http.post("/api/logout");
+        }
 
         function findUserByUsername(username) {
             var url="/api/user?username="+username;
@@ -29,7 +54,7 @@
         
         function deleteUser(userId) {
             var api="/api/user/"+userId;
-            return $http.delete(url);
+            return $http.delete(api);
         }
 
         
@@ -38,7 +63,7 @@
             return $http.get(url);
              
         }
-
+    
         function findUserById(id) {
             var url="/api/user/"+id;
             return $http.get(url);

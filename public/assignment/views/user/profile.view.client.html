@@ -57,15 +57,15 @@
 
         <a class="btn btn-primary btn-block"
            href="#/user/{{model.user._id}}/website">Websites</a>
-        <a class="btn btn-danger  btn-block"
-           href="#/login">Logout</a>
+        <a ng-click="model.logout()" class="btn btn-danger btn-block"   >Logout</a>
+        <a ng-click="model.deleteUser()" class="btn btn-danger btn-block">Delete</a>
     </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
 
             <div class="col-xs-12 text-center">
-                <a href="#/user/{{model.id}}" role="button">
+                <a href="#/user/{{model.user._id}}" role="button">
                     <span class="glyphicon glyphicon-user pull-right navbar-text"></span>
 
                 </a>

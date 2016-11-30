@@ -4,25 +4,24 @@
         .controller("ProfileController",ProfileController);
 
     
-    function ProfileController($location,$routeParams,UserService) {
+    function ProfileController($location,$routeParams,UserService,$rootScope) {
         
         var vm=this;
         vm.updateUser=updateUser;
-        vm.id=$routeParams.uid;
+        vm.deleteUser=deleteUser;
+        vm.logout=logout;
+        // vm.id=$routeParams.uid;
+        var id=$rootScope.currentUser._id;
         function init() {
-            console.log("controller in");
-            console.log(vm.id);
-            UserService.findUserById(vm.id)
+            UserService.findUserById(id)
                 .then(function (response) {
                     vm.user=response.data;
-                    console.log("controller")
-                    console.log(vm.user)
                 });
         }
         init();
         
         function updateUser(newUser) {
-            UserService.updateUser(vm.id,newUser)
+            UserService.updateUser(id,newUser)
                 .then(function (response) {
                     console.log(response.data);
                     vm.success="Success";
@@ -30,6 +29,30 @@
 
             
         }
+
+        function logout() {
+            UserService
+                .logout()
+                .then(
+                    function (response) {
+                        $location.url("/login")
+                    },function (error) {
+                        $location.url("/login")
+                    }
+                )
+        }
+
+        function deleteUser() {
+            UserService
+                .deleteUser(id)
+                .then(
+                    function () {
+                        $location.url("/login");
+                    },
+                    function (error) {
+                        vm.error="unable to update user";
+                    })
+        };
 
 
     }

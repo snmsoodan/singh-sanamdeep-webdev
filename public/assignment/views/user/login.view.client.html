@@ -2,13 +2,34 @@
 <div class="container">
         <div ng-show="model.error" class="alert alert-danger" role="alert">{{model.error}}</div>
         <h1>Login</h1>
-        <input ng-model="username" type="text"
+        <form name="loginForm" ng-app>
+                <div class="control-group">
+        <input name="username"
+                ng-model="username"
+               required
+               ng-class="{true: 'error'}[submitted && loginForm.username.$error.required]"
+               type="text"
                class="form-control"
-               placeholder="username"/>
-        <input ng-model="password" type="password"
+               placeholder="username" />
+                <span class="help-inline" ng-show="submitted && loginForm.username.$error.required">*Username is a Required field</span>
+
+        <input name="password"
+                ng-model="password" required
+               ng-class="{true: 'error'}[submitted && loginForm.password.$error.required]"
+               type="password"
                class="form-control"
                placeholder="password"/>
-        <a ng-click="model.login(username,password)" class="btn btn-primary btn-block">Login</a>
+                <span class="help-inline" ng-show="submitted && loginForm.password.$error.required">*Password is a Required field</span>
+
+                </div>
+
+        <a ng-click="model.login(username,password) ; submitted=true"
+           class="btn btn-primary btn-block">Login</a>
         <a class="btn btn-success btn-block"
            href="#/register">Register</a>
+        <a class="btn btn-primary btn-block" href="/auth/facebook">
+                <span class="fa fa-facebook-official"></span>
+                Facebook
+        </a>
+        </form>
     </div>

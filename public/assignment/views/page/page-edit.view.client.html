@@ -34,7 +34,7 @@
             </div>
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                 <p class="navbar-text pull-right">
-                    <a ng-click="model.updatePage(model.page.name,model.page.title)" class="navbar-link">
+                    <a ng-click="model.updatePage(model.page.name,model.page.title); submitted=true" class="navbar-link">
                         <span class="glyphicon glyphicon-ok"/>
                     </a>
                 </p>
@@ -60,11 +60,22 @@
 
             <div class="col-xs-11 col-sm-12 col-md-7 col-lg-7">
                 <div class="container-fluid">
-                    <form>
+                    <form name="myForm">
                         <div class="form-group">
                             <label class="colorblack" for="wname">Name</label>
-                            <input ng-model="model.page.name" type="text" class="form-control" id="wname" placeholder="Blogger">
+                            <input ng-model="model.page.name"
+                                   type="text"
+                                   required
+                                   ng-class="{ 'error-when' : submitted && myForm.name.$error.required }"
+                                   name="name"
+                                   class="form-control"
+                                   id="wname"
+                                   placeholder="Blogger">
                         </div>
+                        <span ng-show="submitted && myForm.name.$error.required"
+                              class="err">
+                              *Required Field
+                        </span>
 
                         <div class="form-group">
                             <label class="colorblack" for="wtitle">Title</label>

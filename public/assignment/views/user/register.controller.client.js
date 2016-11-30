@@ -28,7 +28,7 @@
                                 firstName:username,
                                 lastName:username
                             };
-                            UserService.createUser(newUser)
+                            UserService.register(newUser)
                                 .then(function (response) {
                                     var success=response.data;
                                     if(success){

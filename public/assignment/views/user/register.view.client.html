@@ -3,17 +3,50 @@
         <div ng-show="model.error" class="alert alert-danger" role="alert">
             {{model.error}}
         </div>
+        <div class="form-group" ng-form name="myForm">
         <h1>Register</h1>
-        <input ng-model="username" type="text"
+        <input ng-model="username"
+               ng-class="{ 'error-when' : submitted && myForm.username.$error.required }"
+               required
+               name="username"
+               type="text"
                class="form-control"
                placeholder="username"/>
-        <input ng-model="password" type="password"
+             <span ng-show="submitted && myForm.username.$error.required"
+                   class="err">
+            *Required Field
+        </span>
+        <input ng-model="password" required
+               type="password"
+               ng-class="{ 'error-when' : submitted && model.perror , 'error-also' : submitted && myForm.vpassword.$error.required  }"
                class="form-control"
+               name="password"
                placeholder="password"/>
-        <input ng-model="rpassword" type="password"
+            <span ng-show="submitted && myForm.password.$error.required"
+                  class="err">
+            *Required Field
+        </span>
+            <span  ng-show="submitted && model.perror"
+                   class="err">
+            *{{model.perror}}
+        </span>
+        <input ng-model="rpassword" required
+               ng-class="{ 'error-when' : submitted && model.perror , 'error-also' : submitted && myForm.vpassword.$error.required}"
+               type="password"
+               name="vpassword"
                class="form-control"
                placeholder="very password"/>
-        <a ng-click="model.createUser(username,password,rpassword)"
+            <span ng-show="submitted && myForm.vpassword.$error.required"
+                  class="err">
+            *Required Field
+        </span>
+        <span  ng-show="submitted && model.perror"
+               class="err">
+            *{{model.perror}}
+        </span>
+
+        </div>
+        <a ng-click="model.createUser(username,password,rpassword) ; submitted=true"
            class="btn btn-primary btn-block">Register</a>
         <a class="btn btn-danger  btn-block"
            href="#/login">Cancel</a>
