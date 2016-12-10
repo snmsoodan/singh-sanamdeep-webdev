@@ -1,10 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="WebAppMaker">
 <head>
     <meta charset="UTF-8">
-    <title>Project Home Page</title>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="initial-scale=1.25, user-scalable = no">
+    <title>WAM</title>
+
+    <link href="https://bootswatch.com/journal/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://bootswatch.com/journal/bootstrap.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <link href="/project/css/style.css" rel="stylesheet">
+
+    <link href="../css/jquery-ui.css" rel="stylesheet">
+    <link href="../css/textAngular.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+
+    <script src="../js/textAngular-sanitize.min.js"></script>
+    <script src="../js/textAngular-rangy.min.js"></script>
+    <script src="../js/textAngular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+    <script src="directives/wam-directives.js"></script>
+
+    <script src="views/user/login.controller.client.js"></script>
+    <script src="views/user/profile.controller.client.js"></script>
+    <script src="views/user/register.controller.client.js"></script>
+    <script src="views/user/userHome.controller.client.js"></script>
+    <script src="views/admin/admin.controller.client.js"></script>
+
+    <script src="views/title/titleHome.controller.client.js"></script>
+    <script src="views/title/titleDirector.controller.client.js"></script>
+    <script src="views/title/movieLikedByUser.controller.client.js"></script>
+    <script src="views/title/movieWriteReviewByUser.controller.client.js"></script>
+    <script src="views/title/movieReviewAllUsers.controller.client.js"></script>
+    <script src="views/title/titleMain.controller.client.js"></script>
+
+    <script src="views/searchUser/like.controller.client.js"></script>
+    <script src="views/searchUser/review.controller.client.js"></script>
+    <script src="views/searchUser/profile.other.controller.client.js"></script>
+    <script src="views/searchUser/otherFollow.controller.client.js"></script>
+    <script src="views/searchUser/otherFollower.controller.client.js"></script>
+    <script src="views/searchUser/findFriend.controller.client.js"></script>
+
+    <script src="views/ownDetails/viewOwnReviews.controller.client.js"></script>
+    <script src="views/ownDetails/viewOwnLikes.controller.client.js"></script>
+    <script src="views/ownDetails/viewOwnFollowers.controller.client.js"></script>
+    <script src="views/ownDetails/viewWhoYouFollow.controller.client.js"></script>
+
+
+    <script src="services/user.service.client.js"></script>
+    <script src="services/movie.service.client.js"></script>
+    <script src="services/like.service.client.js"></script>
+    <script src="services/review.service.client.js"></script>
+    <script src="services/follow.service.client.js"></script>
+
+
+
 </head>
 <body>
-    <h1>Project Home Page</h1>
+    <div ng-view></div>
 </body>
 </html>

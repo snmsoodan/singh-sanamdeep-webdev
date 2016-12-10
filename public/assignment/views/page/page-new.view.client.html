@@ -34,7 +34,7 @@
             </div>
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
                 <p class="navbar-text pull-right">
-                    <a ng-click="model.createPage(name,title); submitted=true" class="navbar-link">
+                    <a ng-click="myForm.$valid && model.createPage(name,title); submitted=true" class="navbar-link">
                         <span class="glyphicon glyphicon-ok"/>
                     </a>
                 </p>

@@ -1,0 +1,146 @@
+<nav class="navbar navbar-inverse  navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <!--<div class="navbar-header page-scroll">-->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="#navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a href="#/user/{{model.userId}}/home" class="navbar-brand page-scroll">Movie Search <span class="backgroundFont glyphicon glyphicon-facetime-video"> </span> </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar-collapse collapse " id="navbar">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="#/user/{{model.userId}}/home">Search Movies</a>
+            </li>
+            <li>
+                <a href="#/user/{{model.userId}}">Profile</a>
+            </li>
+            <li>
+                <a href="#/user/{{model.userId}}/findPeople">Find People</a>
+            </li>
+
+        </ul>
+    </div>
+    </div>
+
+</nav>
+<!--<div class="container-fluid res-back-color box-search">-->
+<div class="container-fluid restaurant-detail pad-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 pull-right">
+                <img class="img img-responsive img-thumbnail"
+                     ng-src="http://img.omdbapi.com/?i={{model.title.imdbID}}&apikey=e37d7dfb">
+                <!--ng-src="{{model.restaurant.image_url}}">-->
+
+            </div>
+            <div class="col-lg-5 fontcol">
+                <!--<div class="col-lg-6">-->
+                <h1>{{model.title.Title}}</h1>
+                <h3>Released: {{model.title.Released}}</h3>
+                <h4>Rated: {{model.title.Rated}}</h4>
+                <h4>Year: {{model.title.Year}}</h4>
+                <h4>Genre: {{model.title.Genre}}</h4>
+                <h4>Runtime: {{model.title.Runtime}}</h4>
+                <h4>Director: {{model.title.Director}}</h4>
+                <h4>Actors: {{model.title.Actors}}</h4>
+                <h4>IMDB Ratings: {{model.title.imdbRating}}</h4>
+                <!--<h4>Plot: {{model.title.Plot}}</h4>-->
+
+
+            </div>
+
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 pad">
+                <h4>Plot: {{model.title.Plot}}</h4>
+            </div>
+
+
+            <div class="col-lg-2 fontcol" ng-if="!model.thisUserLikes">
+                <h5>Like this Movie:</h5>
+                <a class="glyphicon glyphicon-thumbs-up"  role="button"
+                   ng-click="model.likeMovie()"></a>
+            </div>
+            <div class="col-lg-2 fontcol" ng-if="model.thisUserLikes">
+                <h5>Unlike this Movie:</h5>
+                <a class="glyphicon glyphicon-thumbs-down"  role="button"
+                   ng-click="model.unlikeMovie()" ></a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 pad">
+        <ul class="nav nav-tabs">
+            <div ng-if="model.success"
+                 class="alert alert-success"
+                 role="alert">
+                {{model.success}}
+            </div>
+            <div ng-if="model.error"
+                 class="alert alert-danger"
+                 role="alert">
+                {{model.error}}
+            </div>
+
+
+            <li class=""><a  href="#/user/{{model.userId}}/title/{{model.titleId}}/likes" class="backgroundFont" data-toggle="tab" aria-expanded="true">Likes</a></li>
+            <li class="active"><a href="##/user/{{model.userId}}/title/{{model.titleId}}/allReviews" class="backgroundFont"  data-toggle="tab" aria-expanded="false">Reviews</a></li>
+
+            <li class=""> <a href="#/user/{{model.userId}}/title/{{model.titleId}}/writeReview" class="backgroundFont" data-toggle="tab" aria-expanded="false">Review it</a></li>
+        </ul>
+
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="reviews">
+                <div class="row">
+                    <div class="col-lg-1 hidden-lg col-md-1 hidden-md col-sm-1 hidden-sm">
+                    </div>
+                    <div  class="col-lg-10 col-md-10 col-sm-10 paddingfromtop"  ng-if="model.hasBeenReviewed" >
+                        <div        ng-repeat="review in model.reviews">
+                            <div class="well well-sm ">
+
+                                <!--<h5> <a class="backgroundFont">-->
+                                <h5> <a class="backgroundFont" href="#/user/{{model.userId}}/{{review.userId}}/reviews">
+                                    <!--<a href="#/user/{{model.userId}}/{{review._user._id}}/profile">-->
+                                    {{review.username}} : </a> {{review.review}}
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-10" ng-if="!model.hasBeenReviewed" >
+                        <h3> No reviews yet!!</h3>
+
+                    </div>
+                </div>
+                <div class="col-lg-1 col-md-1 col-sm-1"></div>
+
+            </div>
+            <a class="btn btn-success btn-block" href="#/user/{{model.userId}}/title/{{model.titleId}}" role="button">Find similar Movies</a>
+        </div>
+</div>
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container ">
+        <div class="row  navbar-text">
+            <div class="col-lg-3 col-md-3 col-sm-3 bottom-cut footer-fontcolor ">
+                <a href="#/user/{{model.userId}}/home">
+                    <span class="footer-fontcolor glyphicon glyphicon-facetime-video"></span>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3  text-center">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3  text-center">
+            </div>
+            <div class="col-lg-3 bottom-profile  text-center">
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,78 @@
+<nav class="navbar navbar-inverse  navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <!--<div class="navbar-header page-scroll">-->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="#navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a href="#/user/mainHome" class="navbar-brand page-scroll">Movie Search <span class="backgroundFont glyphicon glyphicon-facetime-video"> </span> </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar-collapse collapse " id="navbar">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+
+                <a href="#/user/mainHome">Search Movies without logging in</a>
+            </li>
+            <li>
+                <a href="#/register">Register</a>
+            </li>
+            <!--<li>-->
+            <!--<a href="post.html">Logout</a>-->
+            <!--</li>-->
+        </ul>
+    </div>
+
+
+</nav>
+
+
+
+<div class="container login-margin">
+
+    <div ng-if="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+
+    <h1>Login</h1>
+    <form name="loginForm" ng-app>
+        <div class="control-group">
+            <input ng-class="{true: 'error'}[submitted && loginForm.username.$error.required]"
+                   name="username"
+                   ng-model="username"
+                   type="text"
+                   class="form-control"
+                   placeholder="username"
+                   required />
+            <span class="help-inline" ng-show="submitted && loginForm.username.$error.required">*Username is a Required field</span>
+
+
+            <input ng-class="{true: 'error'}[submitted && loginForm.password.$error.required]"
+                   name="password"
+                   ng-model="password"
+                   type="password"
+                   class="form-control"
+                   placeholder="password"
+                   required/>
+            <span class="help-inline" ng-show="submitted && loginForm.password.$error.required">*Password is a Required field</span>
+        </div>
+
+        <a ng-click="model.login(username,password); submitted=true"
+           class="btn btn-primary btn-block">Login</a>
+
+        <a class="btn btn-success btn-block" href="#/register">Register</a>
+
+        <!--<a class="btn btn-primary btn-block" href="/auth/facebook">-->
+            <!--<span class="fa fa-facebook-official"></span>-->
+            <!--Facebook-->
+        <!--</a>-->
+        <a href="/auth/google" class="btn btn-danger btn-block">
+            <span class="fa fa-google-plus"></span>
+            Google
+        </a>
+    </form>
+</div>

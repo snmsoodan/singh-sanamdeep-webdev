@@ -1,0 +1,97 @@
+    <nav class="navbar navbar-inverse  navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <!--<div class="navbar-header page-scroll">-->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="#navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a href="#/user/{{model.userId}}/home" class="navbar-brand page-scroll">Movie Search <span class="backgroundFont glyphicon glyphicon-facetime-video"> </span> </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar-collapse collapse " id="navbar">
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+            <a href="#/user/{{model.userId}}/home">Search Movies</a>
+        </li>
+            <li>
+                <a href="#/user/{{model.userId}}">Profile</a>
+            </li>
+            <li>
+                <a href="#/user/{{model.userId}}/findPeople">Find People</a>
+            </li>
+
+        </ul>
+    </div>
+    </div>
+
+</nav>
+<div class="container-fluid pad-top">
+    <div class="row">
+    <div ng-if="model.success"
+         class="alert alert-success"
+         role="alert">
+        {{model.success}}
+    </div>
+    <div ng-if="model.error"
+         class="alert alert-danger"
+         role="alert">
+        {{model.error}}
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 pad">
+        <ul class="nav nav-tabs">
+            <li class=""><a href="#/user/{{model.userId}}/{{model.otherUserId}}/profile" class="backgroundFont" data-toggle="tab" aria-expanded="false">Profile</a></li>
+            <li class="active"> <a href="#/user/{{model.userId}}/{{model.otherUserId}}/likes" class="backgroundFont" data-toggle="tab" aria-expanded="true">Likes</a></li>
+            <li class=""> <a href="#/user/{{model.userId}}/{{model.otherUserId}}/reviews" class="backgroundFont" data-toggle="tab" aria-expanded="false">Reviews</a></li>
+            <li class=""> <a href="#/user/{{model.userId}}/{{model.otherUserId}}/followers" class="backgroundFont" data-toggle="tab" aria-expanded="false">Followers</a></li>
+            <li class=""> <a href="#/user/{{model.userId}}/{{model.otherUserId}}/follows" class="backgroundFont" data-toggle="tab" aria-expanded="false">Follows</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="likes">
+
+                <div class="row">
+                    <div class="col-lg-3 hidden-lg col-md-3 hidden-md col-sm-3 hidden-sm">
+                    </div>
+                    <div  class="col-lg-6 col-md-6 col-sm-6 paddingfromtop"  ng-if="model.hasLiked" >
+                        <div        ng-repeat="movie in model.likedMovies">
+                            <div class="well well-sm ">
+
+                                <h5>  <a class="backgroundFont" href="#/user/{{model.userId}}/title/{{movie.titleId}}">
+                                    {{movie.title}}
+                                </a> </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 paddingfromtop" ng-if="!model.hasLiked" >
+                        <h3> Not liked any restaurant yet!!</h3>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"></div>
+            </div>
+        </div>
+    </div>
+        </div>
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container ">
+        <div class="row  navbar-text">
+            <div class="col-lg-3 col-md-3 col-sm-3 bottom-cut footer-fontcolor ">
+                <a href="#/user/{{model.userId}}/home">
+                    <span class="footer-fontcolor glyphicon glyphicon-facetime-video"></span>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3  text-center">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3  text-center">
+            </div>
+            <div class="col-lg-3 bottom-profile  text-center">
+            </div>
+        </div>
+    </div>
+</nav>
+
+

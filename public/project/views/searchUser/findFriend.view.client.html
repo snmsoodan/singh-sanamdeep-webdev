@@ -1,0 +1,89 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <!--<div class="navbar-header page-scroll">-->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="#navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a href="#/user/{{model.userId}}/home" class="navbar-brand page-scroll">Movie Search <span class="backgroundFont glyphicon glyphicon-facetime-video"> </span> </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar-collapse collapse " id="navbar">
+        <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#/user/{{model.userId}}/home">Search Movies</a>
+                </li>
+                <li>
+                    <a href="#/user/{{model.userId}}">{{model.user.username}}</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+</nav>
+<div class=" frn-page container-fluid pad-top-lil">
+    <div class="container-fluid">
+        <div ng-if="model.success"
+             class="alert alert-success"
+             role="alert">
+            {{model.success}}
+        </div>
+        <div>
+            <h3> Search People</h3>
+            <div class="input-group">
+                <input ng-model="searchFriend" placeholder="enter username of friend" type="text" class="form-control">
+    <span class="input-group-btn">
+        <a ng-click="model.findFriend(searchFriend)"  class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+
+
+            </div>
+
+            <div ng-if="!model.noUser" class="media">
+            <div class="media-left media-middle pad-left " ng-repeat="user in model.friends">
+
+                <a href="#/user/{{model.userId}}/{{user._id}}/profile" class="actionlink media-heading">{{user.username}}</a>
+
+            </div>
+                </div>
+
+
+            <div ng-if="model.noUser" class="media">
+                <div class="media-left media-middle pad-left " >
+                    <h4> No user with this username exists</h4>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container ">
+        <div class="row  navbar-text">
+            <div class="col-lg-3 col-md-3 col-sm-3 bottom-cut footer-fontcolor ">
+                <a href="#/user/{{model.userId}}/home">
+                    <span class="footer-fontcolor glyphicon glyphicon-facetime-video"></span>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3  text-center">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3  text-center">
+            </div>
+            <div class="col-lg-3 bottom-profile  text-center">
+            </div>
+        </div>
+    </div>
+</nav>

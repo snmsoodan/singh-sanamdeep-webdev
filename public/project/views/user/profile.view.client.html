@@ -1,0 +1,65 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header right_align">
+            <p class="navbar-brand" href="#">
+                Profile
+            </p>
+                <p class="navbar-text pull-right">
+                <a ng-click="model.updateUser(model.user)" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok right-mar"></span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container">
+    <div ng-if="model.success" class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Success!</strong> {{model.success}}
+    </div>
+
+    <div ng-if="model.error" class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Error!</strong> {{model.error}}
+    </div>
+
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input ng-model="model.user.username" type="text" class="form-control" id="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input ng-model="model.user.email" type="email" class="form-control" id="email" placeholder="jannunzi@gmail.com">
+        </div>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input ng-model="model.user.firstName" type="text" class="form-control" id="first-name" placeholder="Jose">
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input ng-model="model.user.lastName" type="text" class="form-control" id="last-name" placeholder="Annunziato">
+        </div>
+        </form>
+    <a class="btn btn-primary btn-block" href="#/user/{{model.user._id}}/home">Search Movies</a>
+    <!--<a class="btn btn-primary btn-block" href="#/user/mainHome">Search Movies</a>-->
+    <a ng-click="model.logout()" class="btn btn-danger btn-block"   >Logout</a>
+    <a ng-click="model.deleteUser()" class="btn btn-danger btn-block">Delete</a>
+    <a class="btn btn-primary btn-block" href="#/user/{{model.user._id}}/own/reviewsByUser">View My Details</a>
+
+
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+
+        <div class="col-xs-12 text-center">
+            <a href="#/user/{{model.user._id}}" role="button">
+                <span class="glyphicon glyphicon-user pull-right navbar-text"></span>
+
+            </a>
+        </div>
+    </div>
+</nav>

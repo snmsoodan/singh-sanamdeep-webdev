@@ -1,0 +1,142 @@
+<nav class="navbar navbar-inverse  navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <!--<div class="navbar-header page-scroll">-->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="#navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a  href="#/user/{{model.userId}}/home" class="navbar-brand page-scroll">Movie Search <span class="backgroundFont glyphicon glyphicon-facetime-video"> </span> </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="navbar-collapse collapse " id="navbar">
+        <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#/user/{{model.userId}}/home">Search Movies</a>
+                </li>
+                <li>
+                    <a ng-if="!model.userFollows" ng-click="model.addFollow()">Follow {{model.user.firstName}}</a>
+                </li>
+                <li>
+                    <a ng-if="model.userFollows" ng-click="model.unfollowUser()">Unfollow {{model.user.firstName}}</a>
+                </li>
+                <li>
+                    <a href="#/user/{{model.userId}}/findPeople">Find People</a>
+                </li>
+            <li>
+                <a href="#/user/{{model.user.userId}}">Profile</a>
+            </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+
+
+<div class="container-fluid pad-top">
+    <div class="row">
+    <div ng-if="model.success"
+         class="alert alert-success form-group"
+         role="alert">
+        {{model.success}}
+    </div>
+    <div ng-if="model.error"
+         class="alert alert-danger form-group"
+         role="alert">
+        {{model.error}}
+    </div>
+
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 pad">
+    <ul class="nav nav-tabs">
+    <li class="active"><a href="#/user/{{model.userId}}/{{model.otherUserId}}/profile" class="backgroundFont" data-toggle="tab" aria-expanded="true">Profile</a></li>
+    <li class=""> <a href="#/user/{{model.userId}}/{{model.otherUserId}}/likes" class="backgroundFont" data-toggle="tab" aria-expanded="false">Likes</a></li>
+        <li class=""> <a href="#/user/{{model.userId}}/{{model.otherUserId}}/reviews" class="backgroundFont" data-toggle="tab" aria-expanded="false">Reviews</a></li>
+        <li class=""> <a href="#/user/{{model.userId}}/{{model.otherUserId}}/followers" class="backgroundFont" data-toggle="tab" aria-expanded="false">Followers</a></li>
+        <li class=""> <a href="#/user/{{model.userId}}/{{model.otherUserId}}/follows" class="backgroundFont" data-toggle="tab" aria-expanded="false">Follows</a></li>
+        </ul>
+    <div id="myTabContent2" class="tab-content">
+        <div class="tab-pane fade active in" id="profile">
+            <div id="myTabContent3" class="tab-content">
+                <div class="tab-pane fade active in" id="likes">
+                    <div class="row">
+                        <div class="col-lg-1 hidden-lg col-md-1 hidden-md col-sm-1 hidden-sm">
+                        </div>
+                        <div  class="col-lg-10 col-md-10 col-sm-10 paddingfromtop"  ng-if="model.profileExist" >
+                        <div  class="col-lg-10 col-md-10 col-sm-10 paddingfromtop">
+                            <div class="well well-sm ">
+
+                                <h5 class="backgroundFont">
+                                    Username </h5>
+                                <div class="well well-sm ">
+
+                                    <h5 >
+                                        {{model.user.username}} </h5>
+                                </div>
+                            </div>
+
+                            <div class="well well-sm ">
+
+                                <h5 class="backgroundFont">
+                                    First Name </h5>
+                                <div class="well well-sm ">
+
+                                    <h5 >
+                                        {{model.user.firstName}}</h5>
+                                </div>
+                            </div>
+
+                            <div class="well well-sm ">
+
+                                <h5 class="backgroundFont">
+                                    Last Name </h5>
+
+                                <div class="well well-sm ">
+
+                                    <h5 >
+                                        {{model.user.lastName}}</h5>
+                                </div>
+
+                            </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-10" ng-if="!model.profileExist" >
+                            <h3> User Profile has been Deleted</h3>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1"></div>
+                </div>
+            </div>
+</div>
+    </div>
+</div>
+</div>
+    </div>
+
+
+
+
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container ">
+        <div class="row  navbar-text">
+            <div class="col-lg-3 col-md-3 col-sm-3 bottom-cut footer-fontcolor ">
+                <a href="#/user/{{model.userId}}/home">
+                    <span class="footer-fontcolor glyphicon glyphicon-facetime-video"></span>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3  text-center">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3  text-center">
+            </div>
+            <div class="col-lg-3 bottom-profile  text-center">
+            </div>
+        </div>
+    </div>
+</nav>

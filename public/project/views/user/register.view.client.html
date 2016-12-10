@@ -1,0 +1,42 @@
+<div class="container">
+
+    <div class="alert-danger">
+        {{model.error}}
+    </div>
+    <h1>Register</h1>
+    <form name="registerForm" ng-app>
+        <div class="control-group" >
+    <input  ng-class="{true: 'error'}[submitted && registerForm.username.$error.required]"
+            ng-model="username"
+            name="username"
+            type="text"
+           class="form-control"
+           placeholder="username"
+            required/>
+            <span class="help-inline" ng-show="submitted && registerForm.username.$error.required">*Username is a Required field</span>
+
+
+    <input  ng-class="{true: 'error'}[submitted && registerForm.password.$error.required]"
+            ng-model="password"
+            name="password"
+            type="password"
+           class="form-control"
+           placeholder="password"
+            required/>
+            <span class="help-inline" ng-show="submitted && registerForm.password.$error.required">*Password is a Required field</span>
+
+
+    <input  ng-class="{true: 'error'}[submitted && registerForm.repassword.$error.required]"
+            ng-model="verifyPassword"
+            type="password"
+            name="repassword"
+           class="form-control"
+           placeholder="verify password"
+            required/>
+            <span class="help-inline" ng-show="submitted && registerForm.repassword.$error.required">*Password is a Required field</span>
+        </div>
+    <a ng-click="model.createUser(username,password,verifyPassword); submitted=true"
+       class="btn btn-primary btn-block">Register</a>
+    <a class="btn btn-danger btn-block" href="#/login">cancel</a>
+    </form>
+</div>

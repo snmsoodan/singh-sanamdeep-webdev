@@ -18,9 +18,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // var connectionString = 'mongodb://127.0.0.1:27017/fall';
-var connectionString ='mongodb://sanamsoodan:harman587@ds033066.mlab.com:33066/singh-sanamdeep';
-var mongoose = require("mongoose");
-mongoose.connect(connectionString);
+// var connectionString ='mongodb://sanamsoodan:harman587@ds033066.mlab.com:33066/singh-sanamdeep';
+// var mongoose = require("mongoose");
+// mongoose.connect(connectionString);
 
 // configure a public directory to host static content
 app.use(express.static(__dirname + '/public'));
@@ -35,6 +35,11 @@ app.use(express.static(__dirname + '/public'));
 
 
 //console.log(process.env);
+
 var assignment=require("./assignment/app");
 assignment(app);
+
+// var project=require("./project/app");
+// project(app);
+
 app.listen(3000);
