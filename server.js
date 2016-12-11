@@ -36,10 +36,10 @@ app.use(express.static(__dirname + '/public'));
 
 //console.log(process.env);
 
-var assignment=require("./assignment/app");
-assignment(app);
+// var assignment=require("./assignment/app");
+// assignment(app);
 
-// var project=require("./project/app");
-// project(app);
+var project=require("./project/app");
+project(app);
 
 app.listen(3000);
