@@ -16,7 +16,10 @@ module.exports=function (app,models) {
         {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
     ];
 
-
+    app.put("/api/projectuser/admin/:userId/delete/user", deleteAdmin);
+    app.put("/api/projectuser/admin/user/:userId", makeAdmin);
+    app.get("/api/projectuser/admin/users", getAdmins);
+    
     app.post("/api/user",createUser);
     app.post("/api/login", passport.authenticate('wam'), login);
     app.post("/api/logout",logout);
@@ -379,6 +382,47 @@ console.log("service creating user after model call")
         // }
         // res.send({})
 
+    }
+
+    function getAdmins(req, res) {
+        userModel
+            .getAdmins()
+            .then(
+                function (adminObj) {
+                    res.json(adminObj);
+                }, function (error) {
+                    res.statusCode(400).send(error);
+                }
+            );
+    }
+
+
+    function makeAdmin(req, res) {
+        userModel
+            .makeAdmin(req.params.userId)
+            .then(
+                function (stats) {
+                    console.log(stats);
+                    res.send(200);
+                },
+                function (error) {
+                    res.statusCode(404).send(error);
+
+                }
+            );
+
+    }
+
+    function deleteAdmin(req, res) {
+        userModel
+            .deleteAdmin(req.params.userId)
+            .then(
+                function (adminRemObj) {
+                    res.json(adminRemObj);
+                }, function (error) {
+                    res.statusCode(400).send(error);
+                }
+            );
     }
 
 };

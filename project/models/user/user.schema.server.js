@@ -7,6 +7,7 @@ module.exports=function () {
         firstName:String,
         lastName:String,
         email:String,
+        isAdmin: Boolean,
         // facebook:{
         //     token:String,
         //     id:String,

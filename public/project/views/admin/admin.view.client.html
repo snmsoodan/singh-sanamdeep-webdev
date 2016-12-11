@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-sm-6 portfolio-item">
+            <div class="col-md-3 col-sm-6 portfolio-item">
                 <div class="portfolio-caption">
 
                     <h3 class="adminfont">Delete Users</h3>
@@ -62,7 +62,7 @@
                 </div>
 
             </div>
-            <div class="col-md-6 col-sm-6 portfolio-item">
+            <div class="col-md-3 col-sm-6 portfolio-item">
                 <div class="portfolio-caption">
 
                     <h3 class="adminfont">Delete Reviews</h3>
@@ -82,6 +82,49 @@
 
                 </div>
 
+            </div>
+            <div class="col-md-3 col-sm-6 portfolio-item">
+                <div class="portfolio-caption">
+
+                    <h3 class="adminfont">Make Admin</h3>
+                    <p class="text-muted">Click on user to grant Admin Access</p>
+                </div>
+
+                <div class="list-group" >
+                    <!--<h2>  Click user to delete</h2>-->
+
+                    <li class="box-search2 list-group-item" ng-repeat="user in model.users">
+                        <!--class="   ">-->
+                        <a ng-click="model.makeAdmin(user._id)"
+                           class="actionlink ">
+                            <i class="fa  fa-user-secret" aria-hidden="true">
+                                {{user.username}}</i></a>
+                    </li>
+
+
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 portfolio-item">
+                <div class="portfolio-caption">
+
+                    <h3 class="adminfont">Delete Admin</h3>
+                    <p class="text-muted">Click on user to revoke Admin Access</p>
+                </div>
+
+                <div class="list-group" >
+                    <!--<h2>  Click user to delete</h2>-->
+
+                    <li class="box-search2 list-group-item" ng-repeat="user in model.admins">
+                        <!--class="   ">-->
+                        <a ng-click="model.deleteAdmin(user._id)"
+                           class="actionlink ">
+                            <i class="fa fa-user-times" aria-hidden="true">
+                                {{user.username}}</i></a>
+                    </li>
+
+
+                </div>
             </div>
 
 

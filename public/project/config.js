@@ -36,13 +36,13 @@
                 }
             })
 
-            .when("/user/admin",{
+            .when("/user/admin/:id",{
                 templateUrl:"views/admin/admin.view.client.html",
                 controller: "AdminController",
                 controllerAs:"model",
-                // resolve:{
-                //     loggedIn:checkLoggedIn
-                // }
+                resolve:{
+                    loggedIn:checkLoggedIn
+                }
             })
 
             .when("/user/mainHome", {

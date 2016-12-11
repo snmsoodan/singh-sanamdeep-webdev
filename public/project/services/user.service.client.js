@@ -19,10 +19,26 @@
             loggedIn:loggedIn,
             register:register,
             findUsersByUsername:findUsersByUsername,
-            findUsers: findUsers
+            findUsers: findUsers,
+            makeAdmin : makeAdmin,
+            getAdmins : getAdmins,
+            deleteAdmin : deleteAdmin
 
         };
         return api;
+
+        function deleteAdmin(userId) {
+            return $http.put("/api/projectuser/admin/" + userId + "/delete/user");
+        }
+
+
+        function makeAdmin(userId) {
+            return $http.put("/api/projectuser/admin/user/" + userId);
+        }
+
+        function getAdmins() {
+            return $http.get("/api/projectuser/admin/users");
+        }
 
         function findUsers() {
             var url = "/api/allUsers";

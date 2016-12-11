@@ -3,11 +3,14 @@
         .module("WebAppMaker")
         .controller("AdminController", AdminController);
 
-    function AdminController(UserService, ReviewService, $location, LikeService, FollowService) {
+    function AdminController(UserService, ReviewService, $location, LikeService, FollowService,$routeParams) {
         var vm = this;
         vm.deleteAdminUser = deleteAdminUser;
         vm.deleteReview = deleteReview;
         vm.logout = logout;
+        vm.userId =$routeParams.id;
+        vm.makeAdmin = makeAdmin;
+        vm.deleteAdmin = deleteAdmin;
         console.log("admin controller")
 
         function init() {
@@ -54,6 +57,38 @@
                                                     console.log("error review")
                                                     vm.error = "some error ocurred";
                                                 })
+
+                                        UserService
+                                            .getAdmins()
+                                            .then(
+                                                function (response) {
+                                                    if (response.data.length > 0) {
+                                                        vm.allAdmins = response.data;
+
+                                                        vm.admins = [];
+
+                                                        for (i = 0; i < vm.allAdmins.length; i++) {
+                                                            if (vm.allAdmins[i]._id != vm.userId) {
+                                                                vm.admins.push(vm.allAdmins[i]);
+                                                                // console.log(vm.admins);
+                                                            }
+                                                        }
+                                                        if (vm.admins.length > 0) {
+                                                            vm.hasAdmin = true;
+                                                        } else {
+                                                            vm.hasAdmin = false;
+                                                        }
+                                                    } else {
+                                                        vm.hasAdmin = false;
+                                                    }
+                                                },
+                                                function (error) {
+                                                    vm.error = "some error ocurred while fetching the admins";
+                                                })
+                                            , function (error) {
+                                            vm.error = "error ocurred while fetching users";
+                                        }
+
                                         
                                     }, function (error) {
                                         console.log("error whole")
@@ -199,6 +234,40 @@
                     }
                 );
         }
+        
+        function makeAdmin(userId) {
+            UserService
+                .makeAdmin(userId)
+                .then(
+                    function (response) {
+                        console.log("admin made")
+                        init();
+                    },
+                    function (error) {
+                        console.log("error make admin")
+                    }
+                )
+
+        }
+
+        function deleteAdmin(userId) {
+            UserService
+                .deleteAdmin(userId)
+                .then(
+                    function (response) {
+                        console.log("admin deleted")
+                        init();
+                    },
+                    function (error) {
+                        console.log("error delete Admin")
+                    }
+                )
+
+        }
+
+
+        
+
         
     }
 

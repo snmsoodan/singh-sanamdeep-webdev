@@ -14,9 +14,34 @@ module.exports=function () {
         deleteUser:deleteUser,
         updateUser:updateUser,
         findUsersByUsername:findUsersByUsername,
-        findAllUsers:findAllUsers
+        findAllUsers:findAllUsers,
+        getAdmins: getAdmins,
+        makeAdmin : makeAdmin,
+        deleteAdmin : deleteAdmin
     };
     return api;
+
+    function deleteAdmin(userId) {
+        return User
+            .update({_id: userId},{
+                $set: {
+                    isAdmin: false
+                }
+            });
+    }
+
+    function getAdmins() {
+        return User.find({"isAdmin" : true});
+    }
+
+    function makeAdmin(userId) {
+        return User
+            .update({_id: userId},{
+                $set: {
+                    isAdmin: true
+                }
+            });
+    }
 
     function findUserByGoogleId(id){
         return User.findOne({"google.id":id});
