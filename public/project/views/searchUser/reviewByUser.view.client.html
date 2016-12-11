@@ -59,7 +59,7 @@
                     <div  class="col-lg-6 col-md-6 col-sm-6 paddingfromtop" ng-if="model.reviewsPresent" >
                         <div       ng-repeat="review in model.reviewsByUser">
                             <div class="well well-sm ">
-                                <h5><a class="backgroundFont" href="#/user/{{model.userId}}/{{model.otherUserId}}">
+                                <h5><a class="backgroundFont" href="#/user/{{model.userId}}/title/{{review.titleId}}">
                                     {{review.title}} : </a> {{review.review}}</h5>
                             </div>
                         </div>
