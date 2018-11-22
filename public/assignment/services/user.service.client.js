@@ -1,4 +1,4 @@
-(function () {
+(function () {     //iffy patern
     angular
         .module("WebAppMaker")
         .factory("UserService",UserService);
